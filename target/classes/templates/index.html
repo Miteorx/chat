@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Chat</title>
+</head>
+<body>
+<div>
+  <h1 th:text="'Current user : ' + ${currentUser}"></h1>
+</div>
+<div class="container mt-5">
+  <div class="alert alert-info mt-2" th:each="el : ${messages}">
+    <h3 th:text="'User : ' + ${el.person.username}"></h3>
+    <p th:text="'Message : ' + ${el.message}"></p>
+    <br>
+  </div>
+</div>
+
+<form action="/message" method="post">
+  <h3>Send message</h3>
+  <input type="text" name="message" placeholder="Message" class="form-control"><br>
+  <button type="submit" class="btn btn-warning">Send message</button>
+</form>
+<br>
+<form action="/apply" method="post">
+  <h3>Select username</h3>
+  <input type="text" name="username" placeholder="Accept username" class="form-control"><br>
+  <button type="submit" class="btn btn-warning">Submit</button>
+</form>
+</body>
+</html>
